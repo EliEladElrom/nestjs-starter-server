@@ -1,0 +1,5 @@
+# outputs
+/dist
+
+# vscode
+.vscode/settings.json

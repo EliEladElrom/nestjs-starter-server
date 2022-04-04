@@ -1,0 +1,60 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/health-check": {
+      "get": {
+        "operationId": "HealthCheckController_getMyEmployer",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Health check endpoint",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthCheckResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "health-check"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "nextjs-starter-server",
+    "description": "nextjs-starter-server",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "HealthCheckDto": {
+        "type": "object",
+        "properties": {
+          "healthy": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "healthy"
+        ]
+      },
+      "HealthCheckResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/HealthCheckDto"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+#
+# Author: Eli Elad Elrom
+# File: appspec.yml
+#
+# EE: CodeDeploy https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file.html
+# scripts/reload-pm2.sh will reload pm2
+#
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/aws-codedeploy-server
+permissions:
+  - object: /home/ubuntu
+    owner: ubuntu
+    group: ubuntu
+    type:
+      - directory
+      - file
+hooks:
+  ApplicationStart:
+    - location: scripts/reload-pm2.sh
+      timeout: 300
+      runas: ubuntu
