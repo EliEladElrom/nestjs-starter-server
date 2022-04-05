@@ -79,6 +79,9 @@
     "webpack": "5.43.0",
     "webpack-node-externals": "3.0.0"
   },
+  "resolutions": {
+    "@types/react": "17.0.41"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
@@ -99,15 +102,16 @@
     "moduleFileExtensions": [
       "js",
       "json",
-      "ts"
+      "ts",
+      "tsx"
     ],
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
+      "^.+\\.[jt]sx?$": "ts-jest"
     },
     "collectCoverageFrom": [
-      "**/*.(t|j)s"
+      "**/*.[jt]sx?"
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
