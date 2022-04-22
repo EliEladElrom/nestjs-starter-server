@@ -4,17 +4,16 @@ Website: https://EliElrom.com
 License: MIT License
 */
 
-import { writeFileSync } from 'fs';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { ValidationPipe } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import * as basicAuth from 'express-basic-auth';
 
 import { AppModule } from './app/app.module';
 import { TransformInterceptor } from './utils/transform.interceptor';
 
-const PORT = process.env.NESTJS_PORT || 8000;
-const isProduction = process.env.NODE_ENV === 'production';
 declare const module: __WebpackModuleApi.Module;
 
 async function bootstrap() {
@@ -25,6 +24,11 @@ async function bootstrap() {
       transform: true,
     })
   );
+
+  const configService: ConfigService = app.get(ConfigService);
+
+  const PORT = configService.get('NESTJS_PORT') || 8000;
+  const isProduction = configService.get('PUBLIC_ENVIRONMENT') === 'production';
 
   const options = {
     origin: '*',
@@ -39,16 +43,28 @@ async function bootstrap() {
 
   // Swagger UI Setup
   if (!isProduction) {
-    const swaggerConfig = new DocumentBuilder()
-      .setTitle('nextjs-starter-server')
-      .setDescription('nextjs-starter-server')
-      .setVersion('1.0')
-      .build();
-    const document = SwaggerModule.createDocument(app, swaggerConfig);
-    // Save Swagger OpenAPI JSON file within repository for automatic TS generation
-    writeFileSync(`swagger/api.json`, JSON.stringify(document, null, 2));
+    const swaggerUser = configService.get<string>('SWAGGER_USER') || '';
+    const swaggerPassword = configService.get<string>('SWAGGER_PASSWORD') || '';
+    if (swaggerUser && swaggerPassword) {
+      app.use(
+        ['/docs', '/docs-json'],
+        basicAuth({
+          challenge: true,
+          users: {
+            [swaggerUser]: swaggerPassword,
+          },
+        })
+      );
 
-    SwaggerModule.setup('api', app, document);
+      const swaggerConfig = new DocumentBuilder()
+        .setTitle('NestJS Server')
+        .setDescription('NestJS API')
+        .setVersion('1.0')
+        .build();
+      const document = SwaggerModule.createDocument(app, swaggerConfig);
+
+      SwaggerModule.setup('docs', app, document);
+    }
   }
 
   await app.listen(PORT);

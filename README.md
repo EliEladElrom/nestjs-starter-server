@@ -2,7 +2,7 @@
 
 The dedicated back end for the nextjs-starter-server project.
 
-![main](https://github.com/EliEladElrom/nextjs-starter-server/workflows/main/badge.svg)
+![main](https://github.com/EliEladElrom/nestjs-starter-server/workflows/main/badge.svg)
 
 ## Technologies Leveraged
 
@@ -16,10 +16,14 @@ The dedicated back end for the nextjs-starter-server project.
 - Prettier
 - TypeScript
 - Webpack (to enable Hot Module Replacement)
+- Swagger
+- Serve-static
+
+![alt text](https://miro.medium.com/max/1400/1*tuWSMoySuM7gSrFAbFT-OA.jpeg)
 
 ## Prerequisites & Package Management
 
-Dependencies for this project are managed via `npm`. Ensure you have npm and Node installed. This project uses Node `v14.17.3` (LTS) and npm `v7.19.1`.
+Dependencies for this project managed via `npm`. Ensure you have npm and Node installed. This project uses Node `v14.17.3` (LTS) and npm `v7.19.1`.
 
 If you are on a unix based system, you can use `nvm` to install specific node versions using `nvm install 14.17.3`, followed by `nvm alias default 14.17.3`.
 
@@ -30,11 +34,13 @@ If you are on a unix based system, you can use `nvm` to install specific node ve
 
 For a reference of available environment variables, see the `.env.sample` file. The environment variables are:
 
-| Variable          | Description                               |
-| ----------------- | ----------------------------------------- |
-| `NESTJS_PORT`     | Server port for NestJS                    |
-| `PINO_LOG_LEVEL`  | Property for desired pinojs logging level |
-| `NODE_ENV`        | Specifies the environment                 |
+| Variable           | Description                               |
+| ------------------ | ----------------------------------------- |
+| `NESTJS_PORT`      | Server port for NestJS                    |
+| `PINO_LOG_LEVEL`   | Property for desired pinojs logging level |
+| `NODE_ENV`         | Specifies the environment                 |
+| `SWAGGER_PASSWORD` | Password to log into swagger ui on /docs  |
+| `SWAGGER_USER`     | Username to log into swagger ui on /docs  |
 
 ## Installation
 
@@ -94,9 +100,14 @@ For more information on the NestJS CLI and its available commands, please refer 
 
 ## Swagger API Documentation
 
-If you are using the `development` environment as your env `NODE_ENV`, you can view the Swagger UI at `http://localhost:<NESTJS_PORT>/api`. If you'd like to view the JSON format of the API documentation, you can go to `http://localhost:<NESTJS_PORT>/api-json`.
+You can view the Swagger UI at `http://localhost:<NESTJS_PORT>/docs`. If you'd like to view the JSON format of the API documentation, you can go to `http://localhost:<NESTJS_PORT>/docs-json`.
+
+For all environments except production, you can view the Swagger API documentation at `URL/docs` using the SWAGGER_USER AND SWAGGER_PASSWORD env variables.
 
 For more information on how the `SwaggerModule` is used in NestJS, please refer to the [documentation](https://docs.nestjs.com/openapi/types-and-parameters).
+
+Important Note: `reflect-metadata` must be installed otherwise you will get the following error:
+`Error "@nestjs/swagger" plugin could not be found!`
 
 ## Automatic TypeScript Generation
 
@@ -109,3 +120,15 @@ For more information on `openapi-typescript`, please refer to the [documentation
 Note: if you are not using the `start:dev` command, you need to manually run the `npm run generate-types` command.
 
 Note: We are using `lint-staged` on this project. As a result, we don't necessarily need to have `prettier` configured in our respective editors. lint-staged will take care of any auto formatting for you via the Husky pre-commit hook.
+
+If you can use help with your React project or have a burning question, or an issue in your project that needs help with, I invite you to hire me as your [Coach](https://elielrom.com). My strategy is 100% results-oriented. If you want to sample how I work 1-on-1, let’s schedule a one-time deep dive [Consultation](https://elielrom.com/CoachingHourly).
+Additionally, [I will tutor you in react, javascript, typescript, mongodb, node, d3.](https://www.fiverr.com/elieladelrom/tutor-you-in-react-javascript-typescript-mongodb-node-d3)
+
+## Where to go from here?
+
+- [Take the interactive d3 and React Course](https://www.udemy.com/course/integrating-d3js-with-react/?referralCode=4C1ADE35AB8633B90205)
+- [View the article on Medium](https://elieladelrom.medium.com/setting-up-an-opinionated-starter-nestjs-starter-typescript-project-with-must-have-libraries-c0cf847648f3)
+- [Visit my site EliElrom.com](https://elielrom.com)
+- [Learning React?](https://github.com/EliEladElrom/react-tutorials)
+
+If you like this library, don't be shy to star it!
