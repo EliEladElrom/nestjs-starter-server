@@ -1,6 +1,6 @@
 {
   "name": "nextjs-starter-server",
-  "version": "0.0.001",
+  "version": "0.0.002",
   "description": "Nextjs-starter-server back end built with NestJS and TypeScript",
   "author": "Eli Elad Elrom",
   "private": false,
