@@ -2,7 +2,7 @@
 
 The dedicated back end for the nextjs-starter-server project.
 
-![main](https://github.com/EliEladElrom/nextjs-starter-server/workflows/main/badge.svg)
+![main](https://github.com/EliEladElrom/nestjs-starter-server/workflows/main/badge.svg)
 
 ## Technologies Leveraged
 
@@ -18,6 +18,8 @@ The dedicated back end for the nextjs-starter-server project.
 - Webpack (to enable Hot Module Replacement)
 - Swagger
 - Serve-static
+
+![alt text](https://miro.medium.com/max/1400/1*tuWSMoySuM7gSrFAbFT-OA.jpeg)
 
 ## Prerequisites & Package Management
 
@@ -118,3 +120,15 @@ For more information on `openapi-typescript`, please refer to the [documentation
 Note: if you are not using the `start:dev` command, you need to manually run the `npm run generate-types` command.
 
 Note: We are using `lint-staged` on this project. As a result, we don't necessarily need to have `prettier` configured in our respective editors. lint-staged will take care of any auto formatting for you via the Husky pre-commit hook.
+
+If you can use help with your React project or have a burning question, or an issue in your project that needs help with, I invite you to hire me as your [Coach](https://elielrom.com). My strategy is 100% results-oriented. If you want to sample how I work 1-on-1, let’s schedule a one-time deep dive [Consultation](https://elielrom.com/CoachingHourly).
+Additionally, [I will tutor you in react, javascript, typescript, mongodb, node, d3.](https://www.fiverr.com/elieladelrom/tutor-you-in-react-javascript-typescript-mongodb-node-d3)
+
+## Where to go from here?
+
+- [Take the interactive d3 and React Course](https://www.udemy.com/course/integrating-d3js-with-react/?referralCode=4C1ADE35AB8633B90205)
+- [View the article on Medium](https://elieladelrom.medium.com/setting-up-an-opinionated-starter-nestjs-starter-typescript-project-with-must-have-libraries-c0cf847648f3)
+- [Visit my site EliElrom.com](https://elielrom.com)
+- [Learning React?](https://github.com/EliEladElrom/react-tutorials)
+
+If you like this library, don't be shy to star it!
