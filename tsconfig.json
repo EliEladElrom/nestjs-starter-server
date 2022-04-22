@@ -13,6 +13,8 @@
     "baseUrl": "./",
     "incremental": true,
     "strict": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   }
 }

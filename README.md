@@ -16,10 +16,12 @@ The dedicated back end for the nextjs-starter-server project.
 - Prettier
 - TypeScript
 - Webpack (to enable Hot Module Replacement)
+- Swagger
+- Serve-static
 
 ## Prerequisites & Package Management
 
-Dependencies for this project are managed via `npm`. Ensure you have npm and Node installed. This project uses Node `v14.17.3` (LTS) and npm `v7.19.1`.
+Dependencies for this project managed via `npm`. Ensure you have npm and Node installed. This project uses Node `v14.17.3` (LTS) and npm `v7.19.1`.
 
 If you are on a unix based system, you can use `nvm` to install specific node versions using `nvm install 14.17.3`, followed by `nvm alias default 14.17.3`.
 
@@ -30,11 +32,13 @@ If you are on a unix based system, you can use `nvm` to install specific node ve
 
 For a reference of available environment variables, see the `.env.sample` file. The environment variables are:
 
-| Variable          | Description                               |
-| ----------------- | ----------------------------------------- |
-| `NESTJS_PORT`     | Server port for NestJS                    |
-| `PINO_LOG_LEVEL`  | Property for desired pinojs logging level |
-| `NODE_ENV`        | Specifies the environment                 |
+| Variable           | Description                               |
+| ------------------ | ----------------------------------------- |
+| `NESTJS_PORT`      | Server port for NestJS                    |
+| `PINO_LOG_LEVEL`   | Property for desired pinojs logging level |
+| `NODE_ENV`         | Specifies the environment                 |
+| `SWAGGER_PASSWORD` | Password to log into swagger ui on /docs  |
+| `SWAGGER_USER`     | Username to log into swagger ui on /docs  |
 
 ## Installation
 
@@ -94,9 +98,14 @@ For more information on the NestJS CLI and its available commands, please refer 
 
 ## Swagger API Documentation
 
-If you are using the `development` environment as your env `NODE_ENV`, you can view the Swagger UI at `http://localhost:<NESTJS_PORT>/api`. If you'd like to view the JSON format of the API documentation, you can go to `http://localhost:<NESTJS_PORT>/api-json`.
+You can view the Swagger UI at `http://localhost:<NESTJS_PORT>/docs`. If you'd like to view the JSON format of the API documentation, you can go to `http://localhost:<NESTJS_PORT>/docs-json`.
+
+For all environments except production, you can view the Swagger API documentation at `URL/docs` using the SWAGGER_USER AND SWAGGER_PASSWORD env variables.
 
 For more information on how the `SwaggerModule` is used in NestJS, please refer to the [documentation](https://docs.nestjs.com/openapi/types-and-parameters).
+
+Important Note: `reflect-metadata` must be installed otherwise you will get the following error:
+`Error "@nestjs/swagger" plugin could not be found!`
 
 ## Automatic TypeScript Generation
 

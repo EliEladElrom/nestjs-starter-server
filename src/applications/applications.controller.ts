@@ -5,9 +5,9 @@ License: MIT License
 */
 
 import { Controller } from '@nestjs/common';
-import { ApplicationsService } from './applications.service';
 
 @Controller('applications')
 export class ApplicationsController {
-  constructor(private readonly applicationsService: ApplicationsService) {}
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  constructor() {}
 }
