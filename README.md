@@ -18,6 +18,7 @@ The dedicated back end for the nextjs-starter-server project.
 - Webpack (to enable Hot Module Replacement)
 - Swagger
 - Serve-static
+- Prisma
 
 ![alt text](https://miro.medium.com/max/1400/1*tuWSMoySuM7gSrFAbFT-OA.jpeg)
 
@@ -41,6 +42,7 @@ For a reference of available environment variables, see the `.env.sample` file. 
 | `NODE_ENV`         | Specifies the environment                 |
 | `SWAGGER_PASSWORD` | Password to log into swagger ui on /docs  |
 | `SWAGGER_USER`     | Username to log into swagger ui on /docs  |
+| `DATABASE_URL`     | Connection string for database            |
 
 ## Installation
 
@@ -50,7 +52,7 @@ $ npm install
 
 ## Running the server
 
-During local development, it is recommended that you run the `npm run start:dev` command to take advantage of Hot Module Replacement, as well as the automatic TypeScript generation. This allows you to avoid having to re-run the build command after you make a change to see the latest version of the application.
+During local development, it's recommended that you run the `npm run start:dev` command to take advantage of Hot Module Replacement, as well as the automatic TypeScript generation. This allows you to avoid having to re-run the build command after you make a change to see the latest version of the application.
 
 The default NESTJS_PORT provided in the `.env.sample` file points to port `8000`. You can navigate to `localhost:8000/api` to verify that the server is running properly.
 
@@ -88,6 +90,8 @@ Generate a controller class:
 
 ```bash
 nest g controller <insert-controller-name-here>
+nest g module <insert-module-name-here>
+nest g service <insert-module-name-here>
 ```
 
 Generate a resource:
@@ -120,6 +124,29 @@ For more information on `openapi-typescript`, please refer to the [documentation
 Note: if you are not using the `start:dev` command, you need to manually run the `npm run generate-types` command.
 
 Note: We are using `lint-staged` on this project. As a result, we don't necessarily need to have `prettier` configured in our respective editors. lint-staged will take care of any auto formatting for you via the Husky pre-commit hook.
+
+## Initialize the Database and Apply Migrations
+
+For the database setup, you must initialize Prisma with the following command:
+
+```bash
+npx prisma generate
+```
+
+The above command will connect to the database specified in `DATABASE_URL`, pulling from your local `.env` file. Make sure to include the Postgres username, password, and database name where appropriate.
+
+`npx prisma generate` loads the Prisma schema from `prisma/schema.prisma`.
+
+To create local postgres database, download the [Postgres App](https://postgresapp.com/downloads.html) and create a server. For more convenient management, you can use clients such as [Postico](https://eggerapps.at/postico/) or [DBeaver](https://dbeaver.io/). Alternatively, you can use the [Postgres CLI](https://www.postgresql.org/docs/current/app-psql.html) command `psql` directly to create a new database.
+
+Creating a migration with a specific name, use the `generate:prisma-migration` to create and apply the migration. If you want to preview the migration before applying, use the `create:prisma-migration`.
+
+```bash
+$ npm run generate:prisma-migration -- name-of-migration
+
+// Create only
+$ npm run create:prisma-migration -- name-of-migration
+```
 
 If you can use help with your React project or have a burning question, or an issue in your project that needs help with, I invite you to hire me as your [Coach](https://elielrom.com). My strategy is 100% results-oriented. If you want to sample how I work 1-on-1, let’s schedule a one-time deep dive [Consultation](https://elielrom.com/CoachingHourly).
 Additionally, [I will tutor you in react, javascript, typescript, mongodb, node, d3.](https://www.fiverr.com/elieladelrom/tutor-you-in-react-javascript-typescript-mongodb-node-d3)
