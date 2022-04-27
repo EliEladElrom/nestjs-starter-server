@@ -1,6 +1,6 @@
 {
   "name": "nextjs-starter-server",
-  "version": "0.0.002",
+  "version": "0.0.003",
   "description": "Nextjs-starter-server back end built with NestJS and TypeScript",
   "author": "Eli Elad Elrom",
   "private": false,
@@ -33,6 +33,7 @@
     "@nestjs/passport": "8.2.1",
     "@nestjs/platform-express": "8.4.0",
     "@nestjs/serve-static": "2.2.2",
+    "@prisma/client": "3.13.0",
     "cache-manager": "3.6.0",
     "class-transformer": "0.4.0",
     "class-validator": "0.13.2",
