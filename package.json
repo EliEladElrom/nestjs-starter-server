@@ -27,7 +27,7 @@
     "isready": "npm run check-types && npm run test && npm run-script build"
   },
   "dependencies": {
-    "@nestjs/common": "8.4.3",
+    "@nestjs/common": "8.4.4",
     "@nestjs/config": "2.0.0",
     "@nestjs/core": "8.4.3",
     "@nestjs/passport": "8.2.1",
