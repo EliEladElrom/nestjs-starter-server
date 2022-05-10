@@ -25,7 +25,7 @@ const prettyPrintConfig = {
 };
 
 export const pinoConfig = {
-  name: 'zephyr-server',
+  name: 'nest-server',
   level: LogLevelMap[PINO_LOG_LEVEL || '30'],
   prettyPrint: process.env.NODE_ENV !== 'production' ? prettyPrintConfig : false,
 };
