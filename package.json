@@ -44,7 +44,7 @@
     "class-validator": "0.13.2",
     "express-basic-auth": "1.2.1",
     "nestjs-pino": "1.4.0",
-    "passport": "0.5.2",
+    "passport": "0.5.3",
     "passport-headerapikey": "1.2.2",
     "passport-http-bearer": "1.0.1",
     "pino-pretty": "6.0.0",
